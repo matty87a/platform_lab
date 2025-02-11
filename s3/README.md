@@ -64,6 +64,7 @@ This repo utilises a number of pre-commit hooks as well as a .terraform-version 
 | [aws_kms_key.objects](https://registry.terraform.io/providers/hashicorp/aws/5.86.1/docs/resources/kms_key) | resource |
 | [aws_s3_bucket_policy.s3_policy](https://registry.terraform.io/providers/hashicorp/aws/5.86.1/docs/resources/s3_bucket_policy) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/5.86.1/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.kms_policy](https://registry.terraform.io/providers/hashicorp/aws/5.86.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.s3_policy](https://registry.terraform.io/providers/hashicorp/aws/5.86.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/5.86.1/docs/data-sources/region) | data source |
 
