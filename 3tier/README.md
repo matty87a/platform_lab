@@ -1,5 +1,4 @@
 # 3 Tier Web App Solution
-
 ## Brief
 
 Your team is tasked with building a new web application for a high-profile product launch. The
@@ -21,7 +20,7 @@ recovery.
 manageable.
 
 ## Solution Design
-![Solution Design](solution.png)
+![Solution Design](assets/solution.png)
 
 ## Solution Design Breakdown
 
@@ -62,6 +61,7 @@ In addition to the above, the below is assumed but not shown for readability:
 
 - Aurora chosen as it provides multi-az redundancy.
 - As mentioned above, AWS Backup has nastive backup support for Aurora.
+- Aurora serverless may also be used (although thats new to myself).
 
 ### Traffic Spikes:
 

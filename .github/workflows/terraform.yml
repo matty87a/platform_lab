@@ -1,0 +1,51 @@
+name: Terraform Pipeline
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  localstack:
+    runs-on: ubuntu-latest
+    services:
+      localstack:
+        image: localstack/localstack:latest
+        env:
+          SERVICES: sts, s3, iam, kms
+          DEFAULT_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+        ports:
+          - 4566:4566
+          - 4571:4571
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        working-directory: ./s3
+      - name: Terraform Init
+        id: init
+        run: terraform init
+        working-directory: ./s3
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -var-file config/dev/vars.tfvars
+        working-directory: ./s3
+        continue-on-error: true
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+      - name: Terraform Apply
+        run: |
+          terraform apply -auto-approve -var-file config/dev/vars.tfvars
+        working-directory: ./s3
+      - name: Terraform Destroy
+        run: |
+          terraform apply -auto-approve -destroy -var-file config/dev/vars.tfvars
+        working-directory: ./s3
