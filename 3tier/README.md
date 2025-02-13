@@ -67,7 +67,7 @@ In addition to the above, the below is assumed but not shown for readability:
 
 - Fargate Auto Scaling used to automatically scale the Web and Application tiers based on demand.
 - Cache static content using CloudFront to reduce load on the Web Tier.
-- Possible Implement connection pooling to optimise database connections.
+- Possible to Implement connection pooling (RDS proxy) to optimise database connections.
 
 ### Cost-Effectiveness:
 
