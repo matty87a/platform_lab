@@ -45,39 +45,39 @@ manageable.
 
 ### Security:
 
-- Cognito can be used for user authentication and authorization.
+- Cognito can be used for user authentication and authorisation.
 - [AWS WAF](https://aws.amazon.com/waf/) (not shown) can also be used if required
-- Centralised Logging for trsffic/application logs can be ingested by SIEM services such as Splunk.
+- Centralised Logging for traffic/application logs can be ingested by SIEM services such as Splunk.
 
 In addition to the above, the below is assumed but not shown for readability:
 
 - Least privilege IAM roles and policies to control access to AWS resources.
 - Least privilege Security Groups to restrict network traffic between tiers/services.
 - Data encrypted at rest (kms) and in transit (ssl).
-- Enhanced ECR Scanning enabled with appropraite alerting.
+- Enhanced ECR Scanning enabled with appropriate alerting.
 - Vulnerability detection in the CI/CD process to minimise the risk of vulnerable (or misconfigured) images being pushed to the ECR repo.
 
 ### Database Management:
 
 - Aurora chosen as it provides multi-az redundancy.
-- As mentioned above, AWS Backup has nastive backup support for Aurora.
+- As mentioned above, AWS Backup has native backup support for Aurora.
 - Aurora serverless may also be used (although thats new to myself).
 
 ### Traffic Spikes:
 
-- Fasrgate Auto Scaling used to automatically scale the Web and Application tiers based on demand.
+- Fargate Auto Scaling used to automatically scale the Web and Application tiers based on demand.
 - Cache static content using CloudFront to reduce load on the Web Tier.
-- Possible Implement connection pooling to optimize database connections.
+- Possible Implement connection pooling to optimise database connections.
 
 ### Cost-Effectiveness:
 
-- Fargate should avoid the overheads of both the actual cost of more static ec2 instances as well as the actual operational cost of mantaining the instances.
-- Possible to right-size ECS tasks and Aurora instances based on actual resource utilization after a dry-run period before releasing into production.
+- Fargate should avoid the overheads of both the actual cost of more static ec2 instances as well as the actual operational cost of maintaining the instances.
+- Possible to right-size ECS tasks and Aurora instances based on actual resource utilisation after a dry-run period before releasing into production.
 
 _Additionally costs can be reduced or maintained with:_
 - Saving Plans
 - Cost explorer reports
-- Cost explorer anomoly detection.
+- Cost explorer anomaly detection.
 
 
 
